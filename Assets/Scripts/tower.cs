@@ -8,6 +8,8 @@ public class tower : MonoBehaviour {
     float range = 10f;
     public GameObject bulletPrefab;
 
+    public int cost = 100;
+
     float fireCooldown = 0.5f;
     float fireCooldownLeft = 0;
 
