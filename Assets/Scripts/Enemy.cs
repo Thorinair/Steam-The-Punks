@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour {
             {
                 //End of path
                 ReachedGoal();
-
+                return;
             }
         }
         Vector3 dir = targetPathNode.position - this.transform.localPosition;
