@@ -4,7 +4,8 @@ using System.Collections;
 public class ScrollingCamera : MonoBehaviour {
 
     public Transform camera;
-    public float speed = 1f;
+    public Camera cameraZoom;
+    public float speed = 0.5f;
     public bool startMoving;
     Vector3 direction;
 	
@@ -30,5 +31,9 @@ public class ScrollingCamera : MonoBehaviour {
     public void StopMoving()
     {
         startMoving = false;
+    }
+    public void ZoomIn()
+    {
+
     }
 }
