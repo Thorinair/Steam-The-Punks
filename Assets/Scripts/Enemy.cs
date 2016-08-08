@@ -1,29 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
     GameObject pathGO;
 
     Transform targetPathNode;
+    Transform selectedPath;
     int pathNodeIndex = 0;
+    int randomPath;
 
     public float speed = 5f;
     public float health = 1;
 
     public int value = 1;
 
-	// Use this for initialization
-	void Start () {
-	pathGO=GameObject.Find("Path");
+    // Use this for initialization
+    void Start()
+    {
+        pathGO = GameObject.Find("Path");
+        randomPath = Random.Range(0, pathGO.transform.childCount);
+        selectedPath = pathGO.transform.GetChild(randomPath);
 
-	}
+    }
 
     void GetNextPathNode()
     {
-        if (pathNodeIndex < pathGO.transform.childCount)
+        if (pathNodeIndex < selectedPath.childCount)
         {
-            targetPathNode = pathGO.transform.GetChild(pathNodeIndex);
+            targetPathNode = selectedPath.GetChild(pathNodeIndex);
             pathNodeIndex++;
         }
         else
@@ -32,9 +38,10 @@ public class Enemy : MonoBehaviour {
             ReachedGoal();
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (targetPathNode == null)
         {
@@ -44,11 +51,12 @@ public class Enemy : MonoBehaviour {
                 //End of path
                 ReachedGoal();
                 return;
+
             }
         }
         Vector3 dir = targetPathNode.position - this.transform.localPosition;
 
-        float distThisFrame=speed*Time.deltaTime;
+        float distThisFrame = speed * Time.deltaTime;
         if (dir.magnitude <= distThisFrame)
         {
             //node reached
@@ -58,10 +66,10 @@ public class Enemy : MonoBehaviour {
         {
             //move to node
             transform.Translate(dir.normalized * distThisFrame, Space.World);
-            Quaternion targetRotation=Quaternion.LookRotation(dir);
-            this.transform.rotation=Quaternion.Lerp(this.transform.rotation,targetRotation,Time.deltaTime*5);
+            Quaternion targetRotation = Quaternion.LookRotation(dir);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
         }
-	}
+    }
     void ReachedGoal()
     {
         GameObject.FindObjectOfType<ScoreManager>().LoseLife();
