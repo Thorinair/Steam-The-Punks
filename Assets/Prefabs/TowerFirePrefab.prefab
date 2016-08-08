@@ -147,7 +147,7 @@ GameObject:
   - 95: {fileID: 9533092}
   - 111: {fileID: 11140562}
   m_Layer: 0
-  m_Name: fireTower
+  m_Name: towerFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1736,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 801dc26bed0480544ad014b3c0a1867e, type: 2}
+  - {fileID: 2100000, guid: 49d93defa7e595845bf7ca8a2fdb6f6c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
