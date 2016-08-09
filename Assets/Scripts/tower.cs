@@ -15,7 +15,10 @@ public class tower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        turretTransform=transform.Find("turret");
+        turretTransform=transform.Find("towerBasic/turret");
+        if (turretTransform == null) {
+            turretTransform = transform.Find("towerAdvanced/turret");
+        }
 	}
 	
 	// Update is called once per frame
