@@ -567,7 +567,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
+  - {fileID: 2100000, guid: cbe2ccefd070c2e41a4cfdfe21e59d39, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -593,7 +593,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
+  - {fileID: 2100000, guid: 5e96d32344a99294ab34bd8f23dd3a9e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -645,7 +645,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
+  - {fileID: 2100000, guid: cbe2ccefd070c2e41a4cfdfe21e59d39, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -671,7 +671,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5e96d32344a99294ab34bd8f23dd3a9e, type: 2}
+  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -749,7 +749,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
+  - {fileID: 2100000, guid: 5e96d32344a99294ab34bd8f23dd3a9e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -801,7 +801,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
+  - {fileID: 2100000, guid: 5e96d32344a99294ab34bd8f23dd3a9e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -957,7 +957,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5e96d32344a99294ab34bd8f23dd3a9e, type: 2}
+  - {fileID: 2100000, guid: 314012bc28dede54bbcff2a0cb504ea1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
