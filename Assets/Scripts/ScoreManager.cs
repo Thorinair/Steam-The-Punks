@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour {
 
     public int lives = 20;
-    public int money = 100;
+    public int money = 10000;
 
     public void LoseLife(int l=1)
     {

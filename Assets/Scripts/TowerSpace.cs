@@ -5,7 +5,6 @@ public class TowerSpace : MonoBehaviour {
 
     void OnMouseUp()
     {
-        print("tower space clicked");
 
         BuildingManager bm = GameObject.FindObjectOfType<BuildingManager>();
         if (bm.selectedTower != null)
@@ -17,7 +16,7 @@ public class TowerSpace : MonoBehaviour {
             }
             sm.money -= bm.selectedTower.GetComponent<tower>().cost;
             print(sm.money);
-            Instantiate(bm.selectedTower, transform.parent.position,bm.selectedTower.transform.rotation);
+            Instantiate(bm.selectedTower, transform.parent.position,transform.parent.rotation);
             Destroy(transform.parent.gameObject);
         }
     }

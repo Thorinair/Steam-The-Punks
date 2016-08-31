@@ -4,20 +4,31 @@ using System.Collections;
 public class tower : MonoBehaviour {
 
     Transform turretTransform;
+    Transform barrelTransform;
 
-    float range = 10f;
+    public float range = 10f;
+    public float damage = 1f;
+    public float radius = 0f;
+    public string name = "";
+    public string description = "";
     public GameObject bulletPrefab;
 
     public int cost = 100;
 
-    float fireCooldown = 0.5f;
+    public float fireCooldown = 0.5f;
     float fireCooldownLeft = 0;
 
 	// Use this for initialization
 	void Start () {
-        turretTransform=transform.Find("towerBasic/turret");
-        if (turretTransform == null) {
-            turretTransform = transform.Find("towerAdvanced/turret");
+        turretTransform = transform.Find(gameObject.transform.GetChild(0).name.ToString() + "/turret");
+        if (turretTransform != null)
+        {
+            barrelTransform = turretTransform.Find("barrel");
+        }
+        
+        if (barrelTransform == null)
+        {
+            barrelTransform = transform.Find(gameObject.transform.GetChild(0).name.ToString() + "/barrel");
         }
 	}
 	
@@ -43,24 +54,48 @@ public class tower : MonoBehaviour {
             return;
         }
 
-        //Pripazi na modeliranje
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
-        Quaternion lookRot = Quaternion.LookRotation(dir);
-        turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+
+        float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
+
+        if (turretTransform != null)
+        {
+            Quaternion lookRot = Quaternion.LookRotation(dir);
+            turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+        }
+
 
         fireCooldownLeft -= Time.deltaTime;
 
-        if (fireCooldownLeft <= 0 && dir.magnitude<=range)
+        if (turretTransform == null)
         {
-            fireCooldownLeft = fireCooldown;
-            ShootAt(nearestEnemy);
+            if (rot < 1)
+            {
+                if (fireCooldownLeft <= 0 && dir.magnitude <= range)
+                {
+                    fireCooldownLeft = fireCooldown;
+                    ShootAt(nearestEnemy);
+                }
+            }
+
+        }
+
+        else
+        {
+            if (fireCooldownLeft <= 0 && dir.magnitude <= range)
+            {
+                fireCooldownLeft = fireCooldown;
+                ShootAt(nearestEnemy);
+            }
         }
 	}
 
     void ShootAt(Enemy e)
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, turretTransform.transform.position, turretTransform.transform.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTransform.transform.position, barrelTransform.transform.rotation);
         Bullet b=bulletGO.GetComponent<Bullet>();
         b.target = e.transform;
+        b.damage = damage;
+        b.radius = radius;
     }
 }
