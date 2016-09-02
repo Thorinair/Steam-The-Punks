@@ -27,7 +27,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         tooltip.transform.GetChild(0).GetComponent<Text>().text = stats.name;
         tooltip.transform.GetChild(1).GetComponent<Text>().text = "Damage:"+stats.damage.ToString();
         tooltip.transform.GetChild(2).GetComponent<Text>().text = "Range:"+stats.range.ToString();
-        tooltip.transform.GetChild(3).GetComponent<Text>().text = "Attack speed:"+stats.fireCooldown.ToString();
+        tooltip.transform.GetChild(3).GetComponent<Text>().text = "Reload time:"+stats.fireCooldown.ToString();
         tooltip.transform.GetChild(4).GetComponent<Text>().text = "Price:" + stats.cost.ToString();
         tooltip.transform.GetChild(5).GetComponent<Text>().text = stats.description;
     }
