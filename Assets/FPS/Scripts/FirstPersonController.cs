@@ -41,7 +41,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        private Transform gunTransform;
 
         // Use this for initialization
         private void Start()
@@ -56,8 +55,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-            gunTransform = transform.Find("Gun");
-            
         }
 
 
@@ -105,11 +102,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
             Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/2f, ~0, QueryTriggerInteraction.Ignore);
+                               m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            //m_MoveDir.x = desiredMove.x*speed;
-            this.transform.rotation = Quaternion.Euler(0, desiredMove.x*50,0);
+            m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
 
@@ -238,11 +234,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void RotateView()
-        {
-
-            //TODO: Pomicanje samo oruzja
-            m_MouseLook.LookRotation (gunTransform, m_Camera.transform);
+        private void RotateView() {
+            m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
 
 
