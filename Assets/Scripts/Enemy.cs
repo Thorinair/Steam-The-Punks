@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
 
     GameObject pathGO;
+    public GameObject explosion;
 
     Transform targetPathNode;
     Transform selectedPath;
@@ -87,6 +88,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         GameObject.FindObjectOfType<ScoreManager>().money += value;
+        Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
