@@ -8,14 +8,14 @@ public class weaponController : MonoBehaviour {
 
     public float sensitivity = 0.1f;
     public float smoothing = 1f;
-    public float damage = 5f;
-    public float radius = 0f;
+    public float fireCooldown = 0.5f;
+    private float cooldownRemaining = 0f;
 
     public GameObject bulletPrefab;
-
+    private GameObject gun;
 	// Use this for initialization
 	void Start () {
-	
+        gun = GameObject.Find("LaserSight");
 	}
 	
 	// Update is called once per frame
@@ -30,23 +30,22 @@ public class weaponController : MonoBehaviour {
 
         this.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(mouseAim.x,-20,25), this.transform.up);
 
-        if (Input.GetMouseButton(0))
+        cooldownRemaining -= Time.deltaTime;
+
+        if (Input.GetMouseButton(0) && cooldownRemaining<=0)
         {
             Fire();
+            cooldownRemaining = fireCooldown;
         }
 	}
 
     void Fire()
     {
+        Vector3 startPosition = gun.transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, startPosition,gun.transform.rotation) as GameObject;
 
-        RaycastHit hit;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            if (hit.collider.tag == "Enemy")
-            {
-
-            }
-        }
+        Destroy(bullet, 2.0f);
     }
 }

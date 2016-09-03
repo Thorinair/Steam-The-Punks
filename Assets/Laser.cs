@@ -13,18 +13,17 @@ public class Laser : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         RaycastHit hit;
-
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             if (hit.collider)
             {
                 lr.SetPosition(1, new Vector3(0, 0, hit.distance));
             }
-            
         }
         else
         {
-            lr.SetPosition(1, new Vector3(0, 0, 5000));
+            lr.SetPosition(1, new Vector3(0, 0, 500));
         }
+
 	}
 }
