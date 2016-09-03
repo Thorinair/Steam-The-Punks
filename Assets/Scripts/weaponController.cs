@@ -13,30 +13,36 @@ public class weaponController : MonoBehaviour {
 
     public GameObject bulletPrefab;
     private GameObject gun;
+    private perspectiveChanger perspective;
 	// Use this for initialization
 	void Start () {
         gun = GameObject.Find("LaserSight");
+        perspective = GameObject.Find("Level").GetComponent<perspectiveChanger>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-
-        md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
-        smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
-
-        mouseAim += smoothV;
-
-        this.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(mouseAim.x,-20,25), this.transform.up);
-
-        cooldownRemaining -= Time.deltaTime;
-
-        if (Input.GetMouseButton(0) && cooldownRemaining<=0)
+        if (perspective.FPS == true)
         {
-            Fire();
-            cooldownRemaining = fireCooldown;
+            var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+            md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+            smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
+
+            mouseAim += smoothV;
+
+            this.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(mouseAim.x, -20, 25), this.transform.up);
+
+            cooldownRemaining -= Time.deltaTime;
+
+            if (Input.GetMouseButton(0) && cooldownRemaining <= 0)
+            {
+                Fire();
+                cooldownRemaining = fireCooldown;
+            }
         }
+
 	}
 
     void Fire()
