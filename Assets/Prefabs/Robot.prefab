@@ -1456,7 +1456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &145916
 GameObject:
   m_ObjectHideFlags: 1
@@ -10853,8 +10853,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 1
   smoothing: 2
-  damage: 5
-  radius: 0
+  fireCooldown: 0.5
+  damage: 0
+  cost: 100
+  description: '"Take control of this bad boy and kick some ass"'
+  name: Punkerton 3000
   bulletPrefab: {fileID: 165158, guid: ec9ccba5f68992946b1e61a0f5dabe4a, type: 2}
 --- !u!120 &12018002
 LineRenderer:
