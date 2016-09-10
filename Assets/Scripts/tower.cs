@@ -13,6 +13,7 @@ public class tower : MonoBehaviour {
     public string description = "";
     public GameObject bulletPrefab;
 
+    int acc = 0;
     public int cost = 100;
 
     public float fireCooldown = 0.5f;
@@ -34,22 +35,28 @@ public class tower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        acc += 1;
+
+        if (acc >= 3) {
+            Tick();
+            acc = 0;
+        }
+    }
+
+    void Tick() {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
 
         Enemy nearestEnemy = null;
         float dist = Mathf.Infinity;
 
-        foreach (Enemy e in enemies)
-        {
+        foreach (Enemy e in enemies) {
             float d = Vector3.Distance(this.transform.position, e.transform.position);
-            if (nearestEnemy == null || d < dist)
-            {
+            if (nearestEnemy == null || d < dist) {
                 nearestEnemy = e;
                 dist = d;
             }
         }
-        if (nearestEnemy == null)
-        {
+        if (nearestEnemy == null) {
             // Debug.Log("No enemies!");
             return;
         }
@@ -58,8 +65,7 @@ public class tower : MonoBehaviour {
 
         float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
 
-        if (turretTransform != null)
-        {
+        if (turretTransform != null) {
             Quaternion lookRot = Quaternion.LookRotation(dir);
             turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
         }
@@ -67,12 +73,9 @@ public class tower : MonoBehaviour {
 
         fireCooldownLeft -= Time.deltaTime;
 
-        if (turretTransform == null)
-        {
-            if (rot < 1)
-            {
-                if (fireCooldownLeft <= 0 && dir.magnitude <= range)
-                {
+        if (turretTransform == null) {
+            if (rot < 1) {
+                if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
                     fireCooldownLeft = fireCooldown;
                     ShootAt(nearestEnemy);
                 }
@@ -80,15 +83,13 @@ public class tower : MonoBehaviour {
 
         }
 
-        else
-        {
-            if (fireCooldownLeft <= 0 && dir.magnitude <= range)
-            {
+        else {
+            if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
                 fireCooldownLeft = fireCooldown;
                 ShootAt(nearestEnemy);
             }
         }
-	}
+    }
 
     void ShootAt(Enemy e)
     {
