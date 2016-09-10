@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour {
     {
         print("clicked");
         if (this.tag == "play")
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Game");
         else if (this.tag == "about")
             SceneManager.LoadScene("Credits");
         else if (this.tag == "quit")

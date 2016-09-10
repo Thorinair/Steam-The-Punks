@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/_SCENES/MainMenu.unity
   - enabled: 1
     path: Assets/_SCENES/Credits.unity
+  - enabled: 1
+    path: Assets/_SCENES/Game.unity
