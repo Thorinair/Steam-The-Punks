@@ -36,7 +36,7 @@ public class towerAoe : MonoBehaviour {
         }
         if (nearestEnemy == null)
         {
-            Debug.Log("No enemies!");
+            // Debug.Log("No enemies!");
             return;
         }
 

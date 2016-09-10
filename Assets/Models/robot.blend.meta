@@ -188,6 +188,7 @@ ModelImporter:
     2300112: //RootNode
     2300114: Sphere_001
     2300116: BezierCurve_007
+    2300118: BezierCurve_040
     3300000: BezierCurve_000
     3300002: BezierCurve_001
     3300004: BezierCurve_002
@@ -247,6 +248,7 @@ ModelImporter:
     3300112: //RootNode
     3300114: Sphere_001
     3300116: BezierCurve_007
+    3300118: BezierCurve_040
     4300000: BezierCurve_007
     4300002: Cube_000
     4300004: BezierCurve_045
@@ -305,6 +307,7 @@ ModelImporter:
     4300110: Cube_048
     4300112: Cube_024_MeshPart0
     4300114: Cube_024_MeshPart1
+    4300116: BezierCurve_040
     7400000: Default Take
     9500000: //RootNode
   materials:

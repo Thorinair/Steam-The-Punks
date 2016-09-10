@@ -50,7 +50,7 @@ public class tower : MonoBehaviour {
         }
         if (nearestEnemy == null)
         {
-            Debug.Log("No enemies!");
+            // Debug.Log("No enemies!");
             return;
         }
 
