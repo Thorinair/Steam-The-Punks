@@ -14,6 +14,7 @@ public class weaponController : MonoBehaviour {
     public float cost = 100f;
     public string description = "";
     public string name = "";
+    public float bulletSpeed = 5f;
 
     public GameObject bulletPrefab;
     private GameObject gun;
@@ -54,7 +55,7 @@ public class weaponController : MonoBehaviour {
         Vector3 startPosition = gun.transform.position;
         GameObject bullet = Instantiate(bulletPrefab, startPosition,gun.transform.rotation) as GameObject;
 
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
         Destroy(bullet, 2.0f);
     }

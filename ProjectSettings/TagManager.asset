@@ -8,6 +8,7 @@ TagManager:
   - about
   - quit
   - Enemy
+  - Building
   layers:
   - Default
   - TransparentFX

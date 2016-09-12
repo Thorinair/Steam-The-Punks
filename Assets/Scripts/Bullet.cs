@@ -54,4 +54,8 @@ public class Bullet : MonoBehaviour {
         }
         Destroy(gameObject);
     }
+    void OnCollisionEnter(Collision col)
+    {
+        Destroy(gameObject);
+    }
 }

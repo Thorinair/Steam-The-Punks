@@ -12,5 +12,9 @@ public class robotBullet : MonoBehaviour {
             enemy.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(gameObject);
         }
+        else if(col.tag=="Building")
+        {
+            Destroy(gameObject);
+        }
     }
 }

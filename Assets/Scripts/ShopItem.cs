@@ -11,7 +11,9 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject tooltip;
     perspectiveChanger perspective;
     weaponController robotStats;
-    
+    public Text infoText;
+    bool informed = false;
+    float timeInformed = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,19 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         perspective = GameObject.Find("Level").GetComponent<perspectiveChanger>();
 	}
 
+    void Update()
+    {
+        if (informed == true)
+        {
+            timeInformed -= Time.deltaTime;
+            if (timeInformed <= 0)
+            {
+                infoText.text = "";
+                informed = false;
+            }
+        }
+    }
+
     public void Click()
     {
         if (stats != null)
@@ -29,8 +44,19 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
         else
         {
-            perspective.purchased = true;
-            perspective.fpsButton.interactable = true;
+            ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
+            if (sm.money >= robotStats.cost)
+            {
+                perspective.purchased = true;
+                perspective.fpsButton.interactable = true;
+            }
+            else
+            {
+                infoText.text = "Not enough money";
+                informed = true;
+                timeInformed = 1f;
+            }
+
         }
         
     }
