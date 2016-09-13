@@ -12,8 +12,8 @@ public class ScoreManager : MonoBehaviour {
 
     void Update()
     {
-        moneyText.text = "Money:" + money.ToString();
-        livesText.text = "Lives left:" + lives.ToString();
+        moneyText.text = "Money: " + money.ToString();
+        livesText.text = "Lives left: " + lives.ToString();
     }
 
     public void LoseLife(int l=1)
