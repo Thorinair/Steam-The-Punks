@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     Transform targetPathNode;
     Transform selectedPath;
     int pathNodeIndex = 0;
-    int randomPath;
 
     public float speed = 5f;
     public float health = 1;
@@ -21,8 +20,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         pathGO = GameObject.Find("Path");
-        randomPath = Random.Range(0, pathGO.transform.childCount);
-        selectedPath = pathGO.transform.GetChild(randomPath);
 
     }
 
@@ -90,6 +87,10 @@ public class Enemy : MonoBehaviour
         GameObject.FindObjectOfType<ScoreManager>().money += value;
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+    public void SetWaypoint(int index)
+    {
+        selectedPath = pathGO.transform.GetChild(index);
     }
 
 }

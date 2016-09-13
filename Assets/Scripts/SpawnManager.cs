@@ -5,6 +5,7 @@ public class SpawnManager : MonoBehaviour {
 
     float spawnCooldown = 1f;
     float spawnCooldownRemaining = 0;
+    public int spawnIndex = 0;
 
     [System.Serializable]
 
@@ -36,6 +37,7 @@ public class SpawnManager : MonoBehaviour {
                 {
                     wc.spawned++;
                     Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
+                    wc.enemyPrefab.GetComponent<Enemy>().SetWaypoint(spawnIndex);
                     didSpawn = true;
                     break;
                 }
