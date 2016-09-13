@@ -3,8 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-
-    GameObject pathGO;
+    
     public GameObject explosion;
 
     Transform targetPathNode;
@@ -19,12 +18,9 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        pathGO = GameObject.Find("Path");
-
     }
 
-    void GetNextPathNode()
-    {
+    void GetNextPathNode() {
         if (pathNodeIndex < selectedPath.childCount)
         {
             targetPathNode = selectedPath.GetChild(pathNodeIndex);
@@ -88,7 +84,7 @@ public class Enemy : MonoBehaviour
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
-    public void SetWaypoint(int index)
+    public void SetWaypoint(GameObject pathGO, int index)
     {
         selectedPath = pathGO.transform.GetChild(index);
     }

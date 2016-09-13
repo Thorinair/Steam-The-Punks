@@ -36,8 +36,8 @@ public class SpawnManager : MonoBehaviour {
                 if (wc.spawned < wc.num)
                 {
                     wc.spawned++;
-                    Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
-                    wc.enemyPrefab.GetComponent<Enemy>().SetWaypoint(spawnIndex);
+                    GameObject instance = (GameObject)Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
+                    instance.GetComponent<Enemy>().SetWaypoint(GameObject.Find("Path"), spawnIndex);
                     didSpawn = true;
                     break;
                 }
