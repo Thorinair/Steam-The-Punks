@@ -10440,7 +10440,7 @@ GameObject:
   - 4: {fileID: 370472667}
   - 114: {fileID: 370472666}
   m_Layer: 0
-  m_Name: SpawnManager
+  m_Name: SpawnManager_N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10458,9 +10458,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnIndex: 0
-  waveComps:
-  - enemyPrefab: {fileID: 113612, guid: 1220cc2c552529b4491c1b3090693f05, type: 2}
-    num: 5
+  wc:
+    enemyPrefab: {fileID: 0}
+    num: 0
 --- !u!4 &370472667
 Transform:
   m_ObjectHideFlags: 0
@@ -10632,7 +10632,7 @@ GameObject:
   - 4: {fileID: 376207728}
   - 114: {fileID: 376207729}
   m_Layer: 0
-  m_Name: SpawnManager (1)
+  m_Name: SpawnManager_SR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10663,9 +10663,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnIndex: 1
-  waveComps:
-  - enemyPrefab: {fileID: 103920, guid: fed2b2523b0d0004f937af32f6ddcc87, type: 2}
-    num: 3
+  wc:
+    enemyPrefab: {fileID: 0}
+    num: 0
 --- !u!4 &377278060 stripped
 Transform:
   m_PrefabParentObject: {fileID: 497864, guid: d2f8364c73e34bf4384a224155086000, type: 2}
@@ -24001,7 +24001,7 @@ GameObject:
   - 4: {fileID: 837466409}
   - 114: {fileID: 837466410}
   m_Layer: 0
-  m_Name: SpawnManager (2)
+  m_Name: SpawnManager_SL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24032,9 +24032,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnIndex: 2
-  waveComps:
-  - enemyPrefab: {fileID: 103920, guid: fed2b2523b0d0004f937af32f6ddcc87, type: 2}
-    num: 3
+  wc:
+    enemyPrefab: {fileID: 0}
+    num: 0
+--- !u!1 &840346928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 840346929}
+  - 114: {fileID: 840346930}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840346929
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840346928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -360.6739, y: -625.66614, z: 512.50397}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1736306047}
+  m_RootOrder: 5
+--- !u!114 &840346930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840346928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dece0df4cb0fe43a61b901b856c126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 10
+  timeout: 60
+  e1: {fileID: 103920, guid: fed2b2523b0d0004f937af32f6ddcc87, type: 2}
+  e2: {fileID: 113612, guid: 1220cc2c552529b4491c1b3090693f05, type: 2}
 --- !u!1001 &844603607
 Prefab:
   m_ObjectHideFlags: 0
@@ -46703,7 +46747,7 @@ GameObject:
   - 4: {fileID: 1512671373}
   - 114: {fileID: 1512671374}
   m_Layer: 0
-  m_Name: SpawnManager (3)
+  m_Name: SpawnManager_WD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46734,9 +46778,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnIndex: 3
-  waveComps:
-  - enemyPrefab: {fileID: 103920, guid: fed2b2523b0d0004f937af32f6ddcc87, type: 2}
-    num: 3
+  wc:
+    enemyPrefab: {fileID: 0}
+    num: 0
 --- !u!1001 &1514119273
 Prefab:
   m_ObjectHideFlags: 0
@@ -54088,6 +54132,7 @@ Transform:
   - {fileID: 837466409}
   - {fileID: 1512671373}
   - {fileID: 2137181177}
+  - {fileID: 840346929}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!4 &1736513435 stripped
@@ -66665,7 +66710,7 @@ GameObject:
   - 4: {fileID: 2137181177}
   - 114: {fileID: 2137181178}
   m_Layer: 0
-  m_Name: SpawnManager (4)
+  m_Name: SpawnManager_WU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66696,9 +66741,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnIndex: 4
-  waveComps:
-  - enemyPrefab: {fileID: 103920, guid: fed2b2523b0d0004f937af32f6ddcc87, type: 2}
-    num: 3
+  wc:
+    enemyPrefab: {fileID: 0}
+    num: 0
 --- !u!1001 &2137515384
 Prefab:
   m_ObjectHideFlags: 0
