@@ -18,13 +18,13 @@ public class ScoreManager : MonoBehaviour {
 
     public void LoseLife(int l=1)
     {
-        lives -= l;
+        lives -=l;
         if (lives <= 0)
         {
             GameOver();
         }
     }
     public void GameOver(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameOver");
     }
 }

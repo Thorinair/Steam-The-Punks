@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/_SCENES/Tutorial.unity
   - enabled: 1
     path: Assets/_SCENES/Game.unity
+  - enabled: 1
+    path: Assets/_SCENES/GameOver.unity

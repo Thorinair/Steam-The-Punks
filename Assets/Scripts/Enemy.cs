@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float health = 1;
 
     public int value = 1;
+    private bool dead = false;
 
     // Use this for initialization
     void Start()
@@ -66,8 +67,13 @@ public class Enemy : MonoBehaviour
     }
     void ReachedGoal()
     {
-        GameObject.FindObjectOfType<ScoreManager>().LoseLife();
-        Destroy(gameObject);
+        if (dead == false)
+        {
+            GameObject.FindObjectOfType<ScoreManager>().LoseLife();
+            dead = true;
+            Destroy(gameObject);
+        }
+
     }
 
     public void TakeDamage(float damage)
