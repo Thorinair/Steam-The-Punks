@@ -860,7 +860,7 @@ MonoBehaviour:
   description: '"Cheap tower that deals minor damage"'
   bulletPrefab: {fileID: 187314, guid: 8c202da0958e6fe47b1a64ed5d8c706c, type: 2}
   cost: 100
-  fireCooldown: 0.5
+  fireCooldown: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
