@@ -955,7 +955,7 @@ MonoBehaviour:
   description: '"This thing can blast multiple enemies"'
   bulletPrefab: {fileID: 187314, guid: 8c202da0958e6fe47b1a64ed5d8c706c, type: 2}
   cost: 100
-  fireCooldown: 1.5
+  fireCooldown: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
