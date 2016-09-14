@@ -47,7 +47,7 @@ public class tower : MonoBehaviour {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
 
         Enemy nearestEnemy = null;
-        float dist = Mathf.Infinity;
+        float dist = range;
 
         foreach (Enemy e in enemies) {
             float d = Vector3.Distance(this.transform.position, e.transform.position);
@@ -61,32 +61,33 @@ public class tower : MonoBehaviour {
             return;
         }
 
-        Vector3 dir = nearestEnemy.transform.position - this.transform.position;
+        if (dist <= range) {
+            Vector3 dir = nearestEnemy.transform.position - this.transform.position;
 
-        float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
+            float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
 
-        if (turretTransform != null) {
-            Quaternion lookRot = Quaternion.LookRotation(dir);
-            turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
-        }
+            if (turretTransform != null) {
+                Quaternion lookRot = Quaternion.LookRotation(dir);
+                turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+            }
 
 
-        fireCooldownLeft -= Time.deltaTime;
+            fireCooldownLeft -= Time.deltaTime;
 
-        if (turretTransform == null) {
-            if (rot < 1) {
+            if (turretTransform == null) {
+                if (rot < 1) {
+                    if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
+                        fireCooldownLeft = fireCooldown;
+                        ShootAt(nearestEnemy);
+                    }
+                }
+
+            }
+            else {
                 if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
                     fireCooldownLeft = fireCooldown;
                     ShootAt(nearestEnemy);
                 }
-            }
-
-        }
-
-        else {
-            if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
-                fireCooldownLeft = fireCooldown;
-                ShootAt(nearestEnemy);
             }
         }
     }

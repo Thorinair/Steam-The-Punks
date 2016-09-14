@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     Transform selectedPath;
     int pathNodeIndex = 0;
 
-    public float speed = 5f;
+    public float speed = 20f;
     public float health = 1;
 
     public int value = 1;
@@ -21,15 +21,15 @@ public class Enemy : MonoBehaviour
     }
 
     void GetNextPathNode() {
-        if (pathNodeIndex < selectedPath.childCount)
-        {
-            targetPathNode = selectedPath.GetChild(pathNodeIndex);
-            pathNodeIndex++;
-        }
-        else
-        {
-            targetPathNode = null;
-            ReachedGoal();
+        if (selectedPath != null) {
+            if (pathNodeIndex < selectedPath.childCount) {
+                targetPathNode = selectedPath.GetChild(pathNodeIndex);
+                pathNodeIndex++;
+            }
+            else {
+                targetPathNode = null;
+                ReachedGoal();
+            }
         }
     }
 

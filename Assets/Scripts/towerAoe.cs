@@ -33,7 +33,7 @@ public class towerAoe : MonoBehaviour {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
 
         Enemy nearestEnemy = null;
-        float dist = Mathf.Infinity;
+        float dist = range;
 
         foreach (Enemy e in enemies) {
             float d = Vector3.Distance(this.transform.position, e.transform.position);
@@ -47,18 +47,20 @@ public class towerAoe : MonoBehaviour {
             return;
         }
 
-        //Pripazi na modeliranje
-        Vector3 dir = nearestEnemy.transform.position - this.transform.position;
+        if (dist <= range) {
+            //Pripazi na modeliranje
+            Vector3 dir = nearestEnemy.transform.position - this.transform.position;
 
-        fireCooldownLeft -= Time.deltaTime;
+            fireCooldownLeft -= Time.deltaTime;
 
-        if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
-            fireCooldownLeft = fireCooldown;
-            ShootAt(nearestEnemy);
+            if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
+                fireCooldownLeft = fireCooldown;
+                ShootAt(nearestEnemy);
+            }
         }
     }
 
-        void ShootAt(Enemy e)
+    void ShootAt(Enemy e)
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
         Bullet b = bulletGO.GetComponent<Bullet>();
