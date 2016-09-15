@@ -13,14 +13,16 @@ public class tower : MonoBehaviour {
     public string description = "";
     public GameObject bulletPrefab;
 
-    int acc = 0;
+    int acc = 1;
     public int cost = 100;
 
     public float fireCooldown = 0.5f;
     float fireCooldownLeft = 0;
 
-	// Use this for initialization
-	void Start () {
+    Enemy[] enemies;
+
+    // Use this for initialization
+    void Start () {
         turretTransform = transform.Find(gameObject.transform.GetChild(0).name.ToString() + "/turret");
         if (turretTransform != null)
         {
@@ -35,58 +37,61 @@ public class tower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        acc += 1;
+        acc++;
 
-        if (acc >= 3) {
-            Tick();
-            acc = 0;
+        if (acc >= 60) {
+            acc = 1;
+            enemies = FindObjectsOfType<Enemy>();
         }
-    }
 
-    void Tick() {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        if (enemies != null) {
+            Enemy nearestEnemy = null;
+            float dist = range;
 
-        Enemy nearestEnemy = null;
-        float dist = range;
-
-        foreach (Enemy e in enemies) {
-            float d = Vector3.Distance(this.transform.position, e.transform.position);
-            if (nearestEnemy == null || d < dist) {
-                nearestEnemy = e;
-                dist = d;
+            foreach (Enemy e in enemies) {
+                if (e != null) {
+                    float d = Vector3.Distance(this.transform.position, e.transform.position);
+                    if (nearestEnemy == null || d < dist) {
+                        nearestEnemy = e;
+                        dist = d;
+                    }
+                }
+                else {
+                    return;
+                }
             }
-        }
-        if (nearestEnemy == null) {
-            // Debug.Log("No enemies!");
-            return;
-        }
-
-        if (dist <= range) {
-            Vector3 dir = nearestEnemy.transform.position - this.transform.position;
-
-            float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
-
-            if (turretTransform != null) {
-                Quaternion lookRot = Quaternion.LookRotation(dir);
-                turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+            if (nearestEnemy == null) {
+                // Debug.Log("No enemies!");
+                return;
             }
 
+            if (dist <= range) {
+                Vector3 dir = nearestEnemy.transform.position - this.transform.position;
 
-            fireCooldownLeft -= Time.deltaTime;
+                float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
 
-            if (turretTransform == null) {
-                if (rot < 1) {
+                if (turretTransform != null) {
+                    Quaternion lookRot = Quaternion.LookRotation(dir);
+                    turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+                }
+
+
+                fireCooldownLeft -= Time.deltaTime;
+
+                if (turretTransform == null) {
+                    if (rot < 1) {
+                        if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
+                            fireCooldownLeft = fireCooldown;
+                            ShootAt(nearestEnemy);
+                        }
+                    }
+
+                }
+                else {
                     if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
                         fireCooldownLeft = fireCooldown;
                         ShootAt(nearestEnemy);
                     }
-                }
-
-            }
-            else {
-                if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
-                    fireCooldownLeft = fireCooldown;
-                    ShootAt(nearestEnemy);
                 }
             }
         }
