@@ -19,6 +19,8 @@ public class tower : MonoBehaviour {
     public float fireCooldown = 0.5f;
     float fireCooldownLeft = 0;
 
+    public bool isFire = false;
+
     Enemy[] enemies;
 
     // Use this for initialization
@@ -78,31 +80,26 @@ public class tower : MonoBehaviour {
 
                 fireCooldownLeft -= Time.deltaTime;
 
-                if (turretTransform == null) {
-                    if (rot < 1) {
-                        if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
-                            fireCooldownLeft = fireCooldown;
-                            ShootAt(nearestEnemy);
-                        }
-                    }
-
-                }
-                else {
-                    if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
-                        fireCooldownLeft = fireCooldown;
-                        ShootAt(nearestEnemy);
-                    }
+                
+                if (fireCooldownLeft <= 0 && dir.magnitude <= range) {
+                    fireCooldownLeft = fireCooldown;
+                    ShootAt(nearestEnemy);
                 }
             }
         }
     }
 
-    void ShootAt(Enemy e)
-    {
+    void ShootAt(Enemy e) {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTransform.transform.position, barrelTransform.transform.rotation);
-        Bullet b=bulletGO.GetComponent<Bullet>();
-        b.target = e.transform;
-        b.damage = damage;
-        b.radius = radius;
+
+        if (isFire) {
+            e.GetComponent<Enemy>().TakeDamage(damage);
+        }
+        else {
+            Bullet b = bulletGO.GetComponent<Bullet>();
+            b.target = e.transform;
+            b.damage = damage;
+            b.radius = radius;
+        }
     }
 }
