@@ -4,7 +4,7 @@ using System.Collections;
 public class ScrollingCamera : MonoBehaviour {
 
     public Transform camera;
-    public float speed = 0.5f;
+    public float speed = 5f;
     public bool startMoving;
     Vector3 direction;
     int side = 0;
@@ -24,14 +24,14 @@ public class ScrollingCamera : MonoBehaviour {
     {
         startMoving = true;
         direction = (!opposite) ? camera.forward : -camera.forward;
-        direction *= speed;
+        direction *= speed*Time.deltaTime;
         side = (!opposite) ? 1 : 2;
     }
     public void StartMovingSides(bool opposite)
     {
         startMoving = true;
         direction = (!opposite) ? camera.right : -camera.right;
-        direction *= speed;
+        direction *= speed*Time.deltaTime;
         side = (!opposite) ? 3 : 4;
     }
     public void StopMoving()

@@ -453,9 +453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 131164, guid: 3c5f4e32698bdb04eaed647f60310510, type: 2}
-  speed: 20
+  speed: 10
   health: 3
-  value: 10
+  value: 20
 --- !u!135 &13536416
 SphereCollider:
   m_ObjectHideFlags: 1
