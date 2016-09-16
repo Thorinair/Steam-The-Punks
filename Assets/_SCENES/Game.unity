@@ -24053,6 +24053,7 @@ MonoBehaviour:
   eEye: {fileID: 103920, guid: fed2b2523b0d0004f937af32f6ddcc87, type: 2}
   eRob: {fileID: 113612, guid: 1220cc2c552529b4491c1b3090693f05, type: 2}
   eBos: {fileID: 172284, guid: 30e299673b43c3b4e829abc4aa085b87, type: 2}
+  eEyeE: {fileID: 103920, guid: 17c28f3a154d42646af68dbf63238c9c, type: 2}
 --- !u!1001 &844603607
 Prefab:
   m_ObjectHideFlags: 0

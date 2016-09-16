@@ -9,6 +9,7 @@ public class WaveManager : MonoBehaviour {
     public GameObject eEye;
     public GameObject eRob;
     public GameObject eBos;
+    public GameObject eEyeE;
 
     int[,] waveCounts;
     GameObject[,] waveEnemies;
@@ -35,7 +36,10 @@ public class WaveManager : MonoBehaviour {
            { 0, 6, 0, 4, 0 },//5
            { 4, 4, 1, 4, 4 },//6
            { 4, 4, 4, 4, 4 },//7
-           { 6, 6, 6, 6, 6 } //8
+           { 6, 6, 6, 6, 6 },//8
+           { 10, 10, 8, 10, 10},//9
+           { 0, 0, 0, 8, 0 },//10
+           { 6, 0, 6, 0, 6,} //11
         };
 
         waveEnemies = new GameObject[,] {
@@ -46,7 +50,10 @@ public class WaveManager : MonoBehaviour {
             { null, eEye, null, eEye, null },//5
             { eEye, eEye, eRob, eEye, eEye },//6
             { eRob, eRob, eRob, eRob, eRob },//7
-            { eRob, eRob, eRob, eRob, eRob } //8
+            { eRob, eRob, eRob, eRob, eRob },//8
+            { eEye, eEye, eRob, eEye, eEye },//9
+            { null, null, null, eEyeE, null}, //10
+            { eEyeE, eEyeE, eEyeE, eEyeE, eEyeE} //11
         };
 
         Invoke("NextWave", start);

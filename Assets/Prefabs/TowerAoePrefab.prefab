@@ -932,14 +932,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577b218d61e5d7f4cba5a0142f2338d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 12
-  damage: 2
+  range: 15
+  damage: 10
   radius: 10
   name: AOE Tower
   description: '"This thing can blast multiple enemies"'
   bulletPrefab: {fileID: 187314, guid: 8c202da0958e6fe47b1a64ed5d8c706c, type: 2}
-  cost: 1
-  fireCooldown: 4
+  cost: 500
+  fireCooldown: 2
   isFire: 0
 --- !u!1001 &100100000
 Prefab:
