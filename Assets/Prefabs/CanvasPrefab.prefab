@@ -2238,8 +2238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628b72bd96fa899408bf60449fd38d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 20
-  money: 150
+  lives: 10
+  money: 100
   moneyText: {fileID: 11461224}
   livesText: {fileID: 11485088}
 --- !u!114 &11498014

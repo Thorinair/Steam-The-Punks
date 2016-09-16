@@ -385,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 189136}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: -160.96, y: 4.060038, z: 212.9}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 472020}
   m_Father: {fileID: 0}
@@ -932,13 +932,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577b218d61e5d7f4cba5a0142f2338d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 20
-  damage: 3
-  radius: 40
+  range: 12
+  damage: 2
+  radius: 10
   name: AOE Tower
   description: '"This thing can blast multiple enemies"'
   bulletPrefab: {fileID: 187314, guid: 8c202da0958e6fe47b1a64ed5d8c706c, type: 2}
-  cost: 100
+  cost: 1
   fireCooldown: 4
   isFire: 0
 --- !u!1001 &100100000

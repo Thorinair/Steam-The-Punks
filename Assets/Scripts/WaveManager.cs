@@ -28,24 +28,25 @@ public class WaveManager : MonoBehaviour {
         spawnManager_WU = GameObject.Find("SpawnManager_WU").GetComponent<SpawnManager>();
 
         waveCounts = new int[,] {
-            { 0, 0, 0, 2, 0 },
-            { 0, 0, 0, 0, 2 },
-            { 2, 0, 2, 0, 0 },
-            { 0, 0, 0, 4, 0 },
-            { 2, 2, 0, 4, 0 },
-            { 2, 2, 0, 4, 4 },
-            { 2, 2, 2, 2, 2 },
-            { 0, 0, 0, 1, 0 }
+           { 0, 0, 0, 2, 0 },//1
+           { 0, 0, 0, 0, 2 },//2
+           { 0, 0, 2, 0, 0 },//3
+           { 0, 0, 4, 0, 4 },//4
+           { 0, 6, 0, 4, 0 },//5
+           { 4, 4, 1, 4, 4 },//6
+           { 4, 4, 4, 4, 4 },//7
+           { 6, 6, 6, 6, 6 } //8
         };
 
         waveEnemies = new GameObject[,] {
-            { null, null, null, eEye, null },
-            { null, null, null, null, eEye },
-            { eEye, null, eEye, null, null },
-            { null, null, null, eRob, null },
-            { eEye, eEye, null, eRob, null },
-            { eEye, eEye, null, eRob, eRob },
-            { null, null, null, eBos, null }
+            { null, null, null, eEye, null },//1
+            { null, null, null, null, eEye },//2
+            { null, null, eEye, null, null },//3
+            { null, eEye, null, null, eEye },//4
+            { null, eEye, null, eEye, null },//5
+            { eEye, eEye, eRob, eEye, eEye },//6
+            { eRob, eRob, eRob, eRob, eRob },//7
+            { eRob, eRob, eRob, eRob, eRob } //8
         };
 
         Invoke("NextWave", start);

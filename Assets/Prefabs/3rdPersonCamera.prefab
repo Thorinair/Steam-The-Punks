@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 447482}
-  speed: 30.33
+  speed: 50.33
   startMoving: 0
 --- !u!114 &11452804
 MonoBehaviour:

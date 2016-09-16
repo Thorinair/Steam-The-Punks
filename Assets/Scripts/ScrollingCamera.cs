@@ -16,7 +16,7 @@ public class ScrollingCamera : MonoBehaviour {
                 (camera.position.z > 70 && side == 2) ||
                 (camera.position.x < -120 && side == 3) ||
                 (camera.position.x > -360 && side == 4)) {
-                camera.position += direction;
+                    camera.position += direction * Time.deltaTime;
             }
         }
 	}
@@ -24,14 +24,14 @@ public class ScrollingCamera : MonoBehaviour {
     {
         startMoving = true;
         direction = (!opposite) ? camera.forward : -camera.forward;
-        direction *= speed*Time.deltaTime;
+        direction *= speed;
         side = (!opposite) ? 1 : 2;
     }
     public void StartMovingSides(bool opposite)
     {
         startMoving = true;
         direction = (!opposite) ? camera.right : -camera.right;
-        direction *= speed*Time.deltaTime;
+        direction *= speed;
         side = (!opposite) ? 3 : 4;
     }
     public void StopMoving()
