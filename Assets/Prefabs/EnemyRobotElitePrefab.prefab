@@ -1184,8 +1184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 131164, guid: 3c5f4e32698bdb04eaed647f60310510, type: 2}
   speed: 10
-  health: 20
-  value: 20
+  health: 200
+  value: 500
 --- !u!135 &13567580
 SphereCollider:
   m_ObjectHideFlags: 1

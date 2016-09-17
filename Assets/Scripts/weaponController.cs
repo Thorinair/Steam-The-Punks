@@ -10,8 +10,8 @@ public class weaponController : MonoBehaviour {
     public float smoothing = 1f;
     public float fireCooldown = 0.5f;
     private float cooldownRemaining = 0f;
-    public float damage = 0f;
-    public float cost = 100f;
+    public float damage = 100f;
+    public float cost = 2500f;
     public string description = "";
     public string name = "";
     public float bulletSpeed = 5f;

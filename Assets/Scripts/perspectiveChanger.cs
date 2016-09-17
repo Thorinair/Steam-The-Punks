@@ -52,7 +52,7 @@ public class perspectiveChanger : MonoBehaviour {
         {
             FPS = true;
             Cursor.lockState = CursorLockMode.Locked;
-            InvokeRepeating("UseFuel", 1, 0.1f);
+            InvokeRepeating("UseFuel", 1, 0.5f);
             FpsCamera.gameObject.SetActive(true);
             NormalCamera.gameObject.SetActive(false);
             fpsButton.gameObject.SetActive(false);
@@ -66,7 +66,7 @@ public class perspectiveChanger : MonoBehaviour {
         FPS = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        InvokeRepeating("FillFuel", 1, 0.1f);
+        InvokeRepeating("FillFuel", 1, 1f);
         NormalCamera.gameObject.SetActive(true);
         FpsCamera.gameObject.SetActive(false);
         fpsButton.gameObject.SetActive(true);

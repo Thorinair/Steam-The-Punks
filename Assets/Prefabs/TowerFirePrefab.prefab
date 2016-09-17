@@ -2461,13 +2461,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 20
-  damage: 10
+  damage: 20
   radius: 0
   name: Fire Tower
   description: '"The roof, the roof, the roof is on fire"'
   bulletPrefab: {fileID: 163286, guid: 50daa816369323b42b56093bb108296f, type: 2}
   cost: 750
-  fireCooldown: 1
+  fireCooldown: 0.5
   isFire: 1
 --- !u!1001 &100100000
 Prefab:

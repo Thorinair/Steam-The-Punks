@@ -36,4 +36,9 @@ public class PauseGame : MonoBehaviour {
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Game");
+    }
 }
