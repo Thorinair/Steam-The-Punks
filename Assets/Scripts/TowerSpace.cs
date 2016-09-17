@@ -7,7 +7,7 @@ public class TowerSpace : MonoBehaviour {
     perspectiveChanger perspective;
     public Text infoText;
     private bool informed = false;
-    private float timeInformed = 1f;
+    private float timeInformed = 0f;
 
     void Start()
     {
@@ -39,9 +39,9 @@ public class TowerSpace : MonoBehaviour {
                 ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
                 if (sm.money < bm.selectedTower.GetComponent<tower>().cost)
                 {
-                    infoText.text = "Not enough money";
+                    infoText.text = "Not enough money.";
                     informed = true;
-                    timeInformed = 1f;
+                    timeInformed = 2f;
                     return;
                 }
                 sm.money -= bm.selectedTower.GetComponent<tower>().cost;

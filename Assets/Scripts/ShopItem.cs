@@ -13,7 +13,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     weaponController robotStats;
     public Text infoText;
     bool informed = false;
-    float timeInformed = 1f;
+    float timeInformed = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -52,9 +52,9 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             else
             {
-                infoText.text = "Not enough money";
+                infoText.text = "Not enough money.";
                 informed = true;
-                timeInformed = 1f;
+                timeInformed = 2f;
             }
 
         }

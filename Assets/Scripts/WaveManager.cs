@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour {
 
@@ -11,6 +12,10 @@ public class WaveManager : MonoBehaviour {
     public GameObject eBos;
     public GameObject eEyeE;
     public GameObject eRobE;
+
+    public Text infoText;
+    bool informed = false;
+    float timeInformed = 0f;
 
     int[,] waveCounts;
     GameObject[,] waveEnemies;
@@ -66,7 +71,13 @@ public class WaveManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (informed == true) {
+            timeInformed -= Time.deltaTime;
+            if (timeInformed <= 0) {
+                infoText.text = "";
+                informed = false;
+            }
+        }
     }
 
     void NextWave() {
@@ -81,7 +92,9 @@ public class WaveManager : MonoBehaviour {
         if (waveEnemies[waveCounter, 4] != null)
             spawnManager_WU.SpawnWave(waveEnemies[waveCounter, 4], waveCounts[waveCounter, 4]);
 
-        Debug.Log("Wave " + waveCounter + " spawned!");
+        infoText.text = "Wave " + (waveCounter+1) + " is approaching!";
+        informed = true;
+        timeInformed = 2f;
 
         waveCounter++;
         if (waveCounter < waveCounts.Length)

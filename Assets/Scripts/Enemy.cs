@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
 
     public int value = 1;
     private bool dead = false;
+
+    public bool isBoss = false;
 
     // Use this for initialization
     void Start()
@@ -69,7 +72,7 @@ public class Enemy : MonoBehaviour
     {
         if (dead == false)
         {
-            GameObject.FindObjectOfType<ScoreManager>().LoseLife();
+            GameObject.FindObjectOfType<ScoreManager>().LoseLife(10);
             dead = true;
             Destroy(gameObject);
         }
@@ -89,6 +92,9 @@ public class Enemy : MonoBehaviour
         GameObject.FindObjectOfType<ScoreManager>().money += value;
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
+        if (isBoss) {
+            SceneManager.LoadScene("Credits");
+        }
     }
     public void SetWaypoint(GameObject pathGO, int index)
     {
