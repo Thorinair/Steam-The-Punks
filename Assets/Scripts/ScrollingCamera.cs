@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScrollingCamera : MonoBehaviour {
 
-    public Transform camera;
+    public Transform cameraObj;
     public float speed = 5f;
     public bool startMoving;
     Vector3 direction;
@@ -12,25 +12,25 @@ public class ScrollingCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (startMoving) {
-            if ((camera.position.z < 330 && side == 1) ||
-                (camera.position.z > 70 && side == 2) ||
-                (camera.position.x < -120 && side == 3) ||
-                (camera.position.x > -360 && side == 4)) {
-                    camera.position += direction * Time.deltaTime;
+            if ((cameraObj.position.z < 330 && side == 1) ||
+                (cameraObj.position.z > 70 && side == 2) ||
+                (cameraObj.position.x < -120 && side == 3) ||
+                (cameraObj.position.x > -360 && side == 4)) {
+                cameraObj.position += direction * Time.deltaTime;
             }
         }
-	}
+	} 
     public void StartMovingForward(bool opposite)
     {
         startMoving = true;
-        direction = (!opposite) ? camera.forward : -camera.forward;
+        direction = (!opposite) ? cameraObj.forward : -cameraObj.forward;
         direction *= speed;
         side = (!opposite) ? 1 : 2;
     }
     public void StartMovingSides(bool opposite)
     {
         startMoving = true;
-        direction = (!opposite) ? camera.right : -camera.right;
+        direction = (!opposite) ? cameraObj.right : -cameraObj.right;
         direction *= speed;
         side = (!opposite) ? 3 : 4;
     }

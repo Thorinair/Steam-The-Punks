@@ -45,8 +45,8 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
-            if (sm.money >= robotStats.cost)
-            {
+            if (sm.money >= robotStats.cost) {
+                sm.money -= (int)robotStats.cost;
                 perspective.purchased = true;
                 perspective.fpsButton.interactable = true;
             }
@@ -65,7 +65,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         tooltip.SetActive(true);
         if (stats != null)
         {
-            tooltip.transform.GetChild(0).GetComponent<Text>().text = stats.name;
+            tooltip.transform.GetChild(0).GetComponent<Text>().text = stats.towerName;
             tooltip.transform.GetChild(1).GetComponent<Text>().text = "Damage: " + stats.damage.ToString();
             tooltip.transform.GetChild(2).GetComponent<Text>().text = "Range: " + stats.range.ToString();
             tooltip.transform.GetChild(3).GetComponent<Text>().text = "Reload time: " + stats.fireCooldown.ToString();
@@ -74,7 +74,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
         else
         {
-            tooltip.transform.GetChild(0).GetComponent<Text>().text = robotStats.name;
+            tooltip.transform.GetChild(0).GetComponent<Text>().text = robotStats.robotName;
             tooltip.transform.GetChild(1).GetComponent<Text>().text = "Damage: " + robotStats.damage.ToString();
             tooltip.transform.GetChild(2).GetComponent<Text>().text = "Reload time: " + robotStats.fireCooldown.ToString();
             tooltip.transform.GetChild(3).GetComponent<Text>().text = "Price: " + robotStats.cost.ToString();

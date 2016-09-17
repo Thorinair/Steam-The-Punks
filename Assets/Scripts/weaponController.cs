@@ -13,7 +13,7 @@ public class weaponController : MonoBehaviour {
     public float damage = 100f;
     public float cost = 2500f;
     public string description = "";
-    public string name = "";
+    public string robotName = "";
     public float bulletSpeed = 5f;
 
     public GameObject bulletPrefab;

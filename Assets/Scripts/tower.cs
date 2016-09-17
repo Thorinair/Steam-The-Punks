@@ -9,7 +9,7 @@ public class tower : MonoBehaviour {
     public float range = 10f;
     public float damage = 1f;
     public float radius = 0f;
-    public string name = "";
+    public string towerName = "";
     public string description = "";
     public GameObject bulletPrefab;
 
@@ -70,7 +70,7 @@ public class tower : MonoBehaviour {
             if (dist <= range) {
                 Vector3 dir = nearestEnemy.transform.position - this.transform.position;
 
-                float rot = Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
+                Quaternion.Angle(this.transform.rotation, nearestEnemy.transform.rotation);
 
                 if (turretTransform != null) {
                     Quaternion lookRot = Quaternion.LookRotation(dir);
