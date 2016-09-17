@@ -70,9 +70,13 @@ public class Enemy : MonoBehaviour
     }
     void ReachedGoal()
     {
-        if (dead == false)
-        {
-            GameObject.FindObjectOfType<ScoreManager>().LoseLife(10);
+        if (dead == false) {
+            if (isBoss) {
+                GameObject.FindObjectOfType<ScoreManager>().LoseLife(10);
+            }
+            else {
+                GameObject.FindObjectOfType<ScoreManager>().LoseLife();
+            }
             dead = true;
             Destroy(gameObject);
         }
