@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour {
            { 0, 0, 0, 8, 0 },//10
            { 6, 0, 6, 0, 6},//11
            { 1, 1, 1, 1, 1}, //12
-           { 5, 5, 1, 5, 5}
+           { 2, 5, 1, 5, 5}
         };
 
         waveEnemies = new GameObject[,] {
